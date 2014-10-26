@@ -60,14 +60,26 @@ def drink_name():
 
     thing = random.choice(noun)
     desc = random.choice(adj)
-    print "Gah, here be yer " + desc + " " + thing
+    print "Gar, here be yer " + desc + " " + thing
+
+def main():
+    """Put the drinks and naming all together"""
+
+    num_drinks = int(raw_input("How many drinks do ye want? "))
+    while num_drinks > 0:
+        # Create the user-generated answer dictionary
+        answers = style_o_drink()
+
+        # Use the dictionary to make a random drink
+        drink = make_drink(answers)
+
+        # Give the drink a random name
+        drink_name()
+        num_drinks = num_drinks - 1
+    else:
+        print "Next time, landlubber."
+
 
 if __name__ == '__main__':
-    # Create the user-generated answer dictionary
-    answers = style_o_drink()
-
-    # Use the dictionary to make a random drink
-    drink = make_drink(answers)
-
-    drink_name()
+    main()
 
