@@ -16,6 +16,9 @@ ingredients = {
     "fruity": ["slice of orange", "dash of cassis", "cherry on top"],
 }
 
+adj = ["Fluffy", "Salty", "Bitter", "Stale", "Prickly", "Sour", "Sweet"]
+noun = ["Whale-tail", "Shark-Snout", "Sea-Dog", "Landlubber", "One-eyed Parrot", "Swabbie"]
+
 def style_o_drink():
     """This function gathers the users drink preferences for a dict.
 
@@ -46,12 +49,18 @@ def make_drink(x):
     for key in x:
         if x[key] == True:
             item = random.choice(ingredients[key])
-            print "You said you liked " + key + " drinks, so",
-            print "I'm going to add in a " + item
             drink.append(item)
+            print "Added a " + item + " to yer drink."
         else:
             pass
     return drink
+
+def drink_name():
+    """Create a drink name randomly out of the noun and adj lists. """
+
+    thing = random.choice(noun)
+    desc = random.choice(adj)
+    print "Gah, here be yer " + desc + " " + thing
 
 if __name__ == '__main__':
     # Create the user-generated answer dictionary
@@ -60,4 +69,5 @@ if __name__ == '__main__':
     # Use the dictionary to make a random drink
     drink = make_drink(answers)
 
-    
+    drink_name()
+
