@@ -17,7 +17,7 @@ ingredients = {
 }
 
 adj = ["Fluffy", "Salty", "Bitter", "Stale", "Prickly", "Sour", "Sweet"]
-noun = ["Whale-tail", "Shark-Snout", "Sea-Dog", "Landlubber", "One-eyed Parrot", "Swabbie"]
+noun = ["Whale-tail", "Shark-Snout", "Sea-Dog", "kraken", "One-eyed Parrot", "Swabbie"]
 
 def style_o_drink():
     """This function gathers the users drink preferences for a dict.
@@ -65,19 +65,19 @@ def drink_name():
 def main():
     """Put the drinks and naming all together"""
 
-    num_drinks = int(raw_input("How many drinks do ye want? "))
-    while num_drinks > 0:
-        # Create the user-generated answer dictionary
-        answers = style_o_drink()
+    while True:
 
-        # Use the dictionary to make a random drink
-        drink = make_drink(answers)
-
-        # Give the drink a random name
-        drink_name()
-        num_drinks = num_drinks - 1
-    else:
-        print "Next time, landlubber."
+        want_drink = raw_input("Do ye want a drink? (Y/N) ").upper()
+        if want_drink == 'Y':
+            # Create the user-generated answer dictionary
+            answers = style_o_drink()
+            # Use the dictionary to make a random drink
+            drink = make_drink(answers)
+            # Give the drink a random name
+            drink_name()
+        else:
+            print "Next time, landlubber."
+            break
 
 
 if __name__ == '__main__':
