@@ -26,19 +26,15 @@ def style_o_drink():
     responses.
     """
     answers = {}
-    answers["strong"] = raw_input(questions["strong"] + " Type Y or N: ").upper()
-    answers["salty"] = raw_input(questions["salty"] + " Type Y or N: ").upper()
-    answers["bitter"] = raw_input(questions["bitter"] + " Type Y or N: ").upper()
-    answers["sweet"] = raw_input(questions["sweet"] + " Type Y or N: ").upper()
-    answers["fruity"] = raw_input(questions["fruity"] + " Type Y or N: ").upper()
-    for key in answers:
+    for key in questions.iterkeys():
+        answers[key] = raw_input(questions[key] + " Type Y or N: ").upper()
         if answers[key] == "Y":
             answers[key] = True
         else:
             answers[key] = False
     return answers
 
-def make_drink(x):
+def make_drink(answers):
     """Create a drink randomly based on the users choices."
 
     This function takes the answers from the style_o_drink function
@@ -46,8 +42,8 @@ def make_drink(x):
     user inputs.
     """
     drink = []
-    for key in x:
-        if x[key] == True:
+    for key, value in answers.iteritems():
+        if answers[key]:
             item = random.choice(ingredients[key])
             drink.append(item)
             print "Added a " + item + " to yer drink."
